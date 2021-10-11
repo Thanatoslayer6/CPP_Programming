@@ -1,6 +1,7 @@
 # CPP_Programming
 Programming quizzes and exams for school
-### Easy
+
+### Some exercises and exams we code in school C++ Programming
 
 
 
@@ -12,4 +13,3 @@ Programming quizzes and exams for school
 
 
 
-#### jk

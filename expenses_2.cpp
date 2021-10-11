@@ -42,7 +42,7 @@ double LastMonth, CurrentMonth, Expenses[5];
                 break;
         }
     }
-    
+   
     // Print output on the screen and determine the difference
    if (CurrentMonth > LastMonth){ // if current month exceeds expenses of last month it means we overspent...
        cout << "We overspent with the amount of: ₱" << (CurrentMonth - LastMonth); // currentmonth - lastmonth gets us a positive value

@@ -140,43 +140,50 @@ int main(){
         cout << "\n\t* The sum of the two dices is -> " << SumOfTwoDices << "\n";
  
         // Game Mechanics
-        if (NumOfRolls == 1 && (SumOfTwoDices == 7 || SumOfTwoDices == 11 )){
-            cout << "\t~ [Player " << Player1Name << " Wins] ~ \n\n";
-            PlayerWins = true;
-
-        } else if (NumOfRolls == 1 && (SumOfTwoDices == 2 || SumOfTwoDices == 3 || SumOfTwoDices == 12)) {
-            cout << "\t~ [Player " << Player2Name << " Wins] ~ \n\n";
-            PlayerWins = true;
-
-        } else if (NumOfRolls == 1 && (SumOfTwoDices == 4 || SumOfTwoDices == 5
-                                       || SumOfTwoDices == 6 || SumOfTwoDices == 8
-                                       || SumOfTwoDices == 9 || SumOfTwoDices == 10)) {
-            PointNumber = SumOfTwoDices;
-            cout << "\t ~ Point Number is -> " << PointNumber << "\n\n";
-            cout << "\t ~ Type 'Y' or 'y' to reroll: ";
-            cin >> UserChoice;
-            if (UserChoice == 'Y' || UserChoice == 'y'){
-                cout << "\t\t* * * * * Rerolling again * * * * *\n";
-            } else {
-                GameIsRunning = false;
-                cout << "\n\t---- Didn't reroll... Thanks for playing, Goodbye :D ----\n";
+        if (NumOfRolls == 1) {
+            switch(SumOfTwoDices){
+                case 7: case 11:
+                    cout << "\t~ [Player 1 (" << Player1Name << ") Wins] ~ \n\n";
+                    PlayerWins = true;
+                    break;
+                case 2: case 3: case 12:
+                    cout << "\t~ [Player 2 (" << Player2Name << ") Wins] ~ \n\n";
+                    PlayerWins = true;
+                    break;
+                default:
+                    PointNumber = SumOfTwoDices;
+                    cout << "\t ~ Point Number is -> " << PointNumber << "\n\n";
+                    cout << "\t ~ Type 'Y' or 'y' to reroll: ";
+                    cin >> UserChoice;
+                    if (UserChoice == 'Y' || UserChoice == 'y'){
+                        cout << "\t\t* * * * * Rerolling again * * * * *\n";
+                    } else {
+                        GameIsRunning = false;
+                        cout << "\n\t---- Didn't reroll... Thanks for playing, Goodbye :D ----\n";
+                    }
+                    break;
             }
-        } else if (NumOfRolls > 1 && SumOfTwoDices == PointNumber){
-            cout << "\t~ [Player " << Player1Name << " Wins] ~ \n";
-            cout << "\t* Reason: Because the sum of the two dices is equal to the point number -> " << PointNumber << "\n\n";
-            PlayerWins = true;
+        } else if (NumOfRolls > 1) {
+            switch(SumOfTwoDices){
+                case 7:
+                    cout << "\t~ [Player 2 (" << Player2Name << ") Wins] ~ \n";
+                    cout << "\t* Reason: Because the sum of the two dices is: 7\n\n";
+                    PlayerWins = true;
+                    break;
+                default:
+                    if (SumOfTwoDices == PointNumber){
+                        cout << "\t~ [Player 1 (" << Player1Name << ") Wins] ~ \n";
+                        cout << "\t* Reason: Because the sum of the two dices is equal to the point number -> " << PointNumber << "\n\n";
+                        PlayerWins = true;
+                    } else {
+                        cout << "\t ~ Point Number is -> " << PointNumber << "\n";
+                        cout << "\t No one wins this round... rerolling again\n";
+                    }
+                    break;
 
-        } else if (NumOfRolls > 1 && SumOfTwoDices == 7){
-            cout << "\t~ [Player " << Player2Name << " Wins] ~ \n";
-            cout << "\t* Reason: Because the sum of the two dices is: 7\n\n";
-            PlayerWins = true;
-
-        } else {
-            cout << "\t ~ Point Number is -> " << PointNumber << "\n";
-            cout << "\t No one wins this round... rerolling again\n";
+            }
         }
-        
-        // If some player wins
+        // If some player wins, ask user if he/she wants to play again...
         if (PlayerWins == true) {
             cout << "\t~ Do you wish to play again? [y/n]: ";
             cin >> UserChoice;

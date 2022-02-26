@@ -4,11 +4,8 @@
 using namespace std;
 
 string ListName, Options[6];
-double Votes[7]; // Last index of votes is sum
-
-double getPercentage(double d){
-    return ((d/Votes[6])  * 100);
-}
+int totalFrequency;
+double Votes[6];
 
 void getPossibleOptions(string *op) { // Pass by reference a string array
     for (int i = 0; i < 6; i++) {
@@ -22,44 +19,32 @@ void getPossibleOptions(string *op) { // Pass by reference a string array
     }
 }
 
-void getNumberOfVotes(double *v) {
+void getNumberOfVotes(double *v, int *total) {
     for (int i = 0; i < 6; i++) {
         cout << "Number of votes for " << Options[i] << ": ";
         cin >> v[i];
-        v[6] += v[i]; // Store total of all frequencies in last index
+        *total += v[i]; // Store total of all frequencies in last index
     }
 }
 
 void finalOutput() {
-    string temp[5];
     cout << "\n   /-----------------------\\" << endl;
     cout << "   |      Survey Says      |" << endl;
     cout << "   \\-----------------------/" << endl;
-    cout << "     Top 5 " << ListName << endl;
+    cout << "     Results for " << ListName << endl;
     cout << "    ~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "     Total or (n) is: " << Votes[6] << endl;
+    cout << "     Total or (n) is: " << totalFrequency << endl;
     cout << "    ~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    for (int i = 0; i < 5; i++) { // We don't include "Others/Undecided"
-        cout << "\t" << Options[i] << " - " << fixed << setprecision(0) << getPercentage(Votes[i]) << "%" << endl;
+    for (int i = 0; i < 5; i++) { // We don't include "Others/Undecided" thus only looping from 5 times
+        cout << "    " << Options[i] << " - " << fixed << setprecision(0) << ((Votes[i]/totalFrequency) * 100) << "%  (with " << Votes[i] << " votes)" << endl;
     }
     cout << "    ~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-}
-
-double *sort(double ar[], int size){
-    for (int i = 0; i < size; i++){
-        for (int k = i + 1; k < size - 1; k++) {
-            if (ar[i] > ar[k]) {
-                 
-            }
-        }
-    }
-    return ar;
 }
 
 int main() {
     cout << "Enter the name of the list: ";
     getline(cin, ListName);
     getPossibleOptions(Options); // pass the string array and store the options
-    getNumberOfVotes(Votes);
+    getNumberOfVotes(Votes, &totalFrequency);
     finalOutput();
 }

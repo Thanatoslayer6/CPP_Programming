@@ -1,9 +1,14 @@
 #include <iostream>
+#include <iomanip>
 #include <string.h>
 using namespace std;
 
 string ListName, Options[6];
-int Votes[7]; // Last index of votes is sum
+double Votes[7]; // Last index of votes is sum
+
+double getPercentage(double d){
+    return ((d/Votes[6])  * 100);
+}
 
 void getPossibleOptions(string *op) { // Pass by reference a string array
     for (int i = 0; i < 6; i++) {
@@ -17,7 +22,7 @@ void getPossibleOptions(string *op) { // Pass by reference a string array
     }
 }
 
-void getNumberOfVotes(int *v) {
+void getNumberOfVotes(double *v) {
     for (int i = 0; i < 6; i++) {
         cout << "Number of votes for " << Options[i] << ": ";
         cin >> v[i];
@@ -25,15 +30,36 @@ void getNumberOfVotes(int *v) {
     }
 }
 
+void finalOutput() {
+    string temp[5];
+    cout << "\n   /-----------------------\\" << endl;
+    cout << "   |      Survey Says      |" << endl;
+    cout << "   \\-----------------------/" << endl;
+    cout << "     Top 5 " << ListName << endl;
+    cout << "    ~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "     Total or (n) is: " << Votes[6] << endl;
+    cout << "    ~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    for (int i = 0; i < 5; i++) { // We don't include "Others/Undecided"
+        cout << "\t" << Options[i] << " - " << fixed << setprecision(0) << getPercentage(Votes[i]) << "%" << endl;
+    }
+    cout << "    ~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+}
+
+double *sort(double ar[], int size){
+    for (int i = 0; i < size; i++){
+        for (int k = i + 1; k < size - 1; k++) {
+            if (ar[i] > ar[k]) {
+                 
+            }
+        }
+    }
+    return ar;
+}
+
 int main() {
     cout << "Enter the name of the list: ";
     getline(cin, ListName);
     getPossibleOptions(Options); // pass the string array and store the options
     getNumberOfVotes(Votes);
-    
-    /* cout << "TOP 5: " << ListName << endl; */
-    /* cout << "Total is " << Votes[6] << endl; */
-    /* for (int i = 0; i < 5; i++) { // We don't include "Others/Undecided" */
-    /*     cout << Options[i] << " has " << Votes[i] << " votes" << endl; */
-    /* } */
+    finalOutput();
 }

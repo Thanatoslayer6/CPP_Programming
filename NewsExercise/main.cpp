@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <chrono>
 
 using namespace std;
 
@@ -8,69 +9,83 @@ string database[2][2] = {
     {"ellejohn", "pass123"}
 };
 string username, password;
+int pageNum;
+string choices[5][2] = { 
+    {'f', "Front Page" },
+    {'h', "Headline" },
+    {'e', "Entertainment" },
+    {'s', "Sports Page" },
+    {'d', "Editorial" }
+};
+char option;
 
-int checkUser(string usr) {
-    for (int i = 0; i < 2; i++) {
-        if (database[i][0] == usr) {
-           return i;  // Means user exists, return index in the database
-        } 
-    }
-    return -1; // Means user is not found, return -1
-}
-
-int checkPwd(int idx, string pwd) {
-    for (int i = 0; i < 2; i++) {
-        if (database[i][idx] == pwd) {
-           return 1;  // Means password is correct
-        } 
-    }
-    return -1; // Means wrong pwd
-}
-
-int checkPage(char choices[], char option){
-    for (int i = 0; i < 5; i++) {
-        if (choices[i] == option || choices[i] == option - 32) { // can be upper or lowercase
-           return 1; 
+bool validateCredentials() {
+    for (int i = 0; i < 2; i++){
+        if (database[i][0] == username && database[i][1] == password) {
+            return true; // Means username and pwd are correct
         }
     }
-    return -1;
+    return false;
+}
+
+int checkPage(char choices[]){
+    for (int i = 0; i < 5; i++) {
+        if (choices[i] == option || choices[i] == option + 32) { // can be upper or lowercase
+           return i; // Returns the right index
+        }
+    }
+    return -1; // -1 for error
+}
+
+void getDate() { // Taken from https://stackoverflow.com/questions/40100507/how-do-i-get-the-current-date-in-c
+    std::time_t now_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    cout << "    Date:" << std::ctime(&now_time);
 }
 
 void Login() {
     cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-=-SITE LOGIN-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
-    // Username validation
-    int usr_index, pass_status;
     cout << "\tEnter username: ";
     cin >> username;
-    usr_index = checkUser(username);
-    if (usr_index == -1){
-        throw 5;
-    }
-    // Password validation
     cout << "\tEnter password: ";
     cin >> password;
-    pass_status = checkPwd(usr_index, password);
-    if (pass_status == -1) {
-        throw 6;
+    if (validateCredentials() == false) {
+        throw 5;
     }
     cout << ".-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
 }
 
 void Home() {
-    char choices[5] = { 'f', 'h', 'e', 's', 'd' };
-    char option;
     // Greet the user
     cout << "\n      ~ [ WELCOME TO THE NEON NEWS SITE (Logged in as " << username << ") ] ~\n";
     cout << "\n     Where do you want to go? ------ Please enter only one character \n\n";
-    cout << "\t* Front Page     - F\n";
+    cout << "\t* " << choices[0][1] << "     - F\n";
     cout << "\t* Headline       - H\n";
     cout << "\t* Entertainment  - E\n";
     cout << "\t* Sports Page    - S\n";
     cout << "\t* Editorial      - D\n\n";
     cout << "\tGO TO ~~~~~~> ";
     cin >> option;
-    if (checkPage(choices, option) == -1) {
+    pageNum = checkPage(choices); // Assign return value of function
+    if (pageNum == -1) {
         throw 8;
+    }
+}
+
+void ShowPage() {
+    switch(pageNum) {
+        case 0: // Front page
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-=-FRONT PAGE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
+            getDate(); // Show date
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-END OF FRONT PAGE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
+            break;
+        case 1: // Headline
+            break;
+        case 2: // Entertainment
+            break;
+        case 3: // Sports Page
+            break;
+        case 4: // Editorial
+            break;
     }
 }
 
@@ -78,16 +93,15 @@ int main() {
     try {
         Login();
         Home();
+        ShowPage();
     } catch (int errcode) {
         switch (errcode) {
             case 5:
-                cout << "\n\tError code 5: Failed to login (username not found)\n";
-                break;
-            case 6:
-                cout << "\n\tError code 6: Failed to login (wrong password)\n";
+                cout << "\n\tError code 5: Failed to login (wrong username/password)\n";
                 break;
             case 8:
                 cout << "\n\tError code 8: Page doesn't exist! \n";
+                break;
         }
     }
 }

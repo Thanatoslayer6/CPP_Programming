@@ -76,7 +76,7 @@ void ShowPage() {
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-=-FRONT PAGE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
             getDate(); // Show date
             cout << R"(
-|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+*--------------------------------------------------------------------------------*
 |  _  _ _  _ _  _ ___  ____ ____    ____ ____    _  _ ____ _ _ _                 |
 |  |\ | |  | |\/| |__] |___ |__/    |  | |___    |\ | |___ | | |                 |
 |  | \| |__| |  | |__] |___ |  \    |__| |       | \| |___ |_|_|                 |
@@ -91,17 +91,37 @@ void ShowPage() {
 |                                                                                |
 |  [ H E A D L I N E ]                                                           |
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-|  [ N E W S  - A R T I C L E S ]  |               [ E N T E R T A I N M E N T ] |
-|                                  |                                             |
-|  PCS STUDENTS WORRIED ABOUT THE  |                                             |
-|         UPCOMING EXAMS           |                                             |
-|                                  |                                             |
-|  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~   |                                             |
-|                                  |                                             |
-|  ELECTIONS 2022: WHY TECHNOLOGY  |                                             |
-|          IS IMPORTANT            |                                             |
-|                                  |                                             |
----------------------------------------------------------------------------------|
+|  [ N E W S  - A R T I C L E S ]   |             [ E N T E R T A I N M E N T ]  |
+|                                   |                                            |
+|  PCS STUDENTS WORRIED ABOUT THE   |        /\  _ |_. _. _  _ |_ _ _|           | 
+|          UPCOMING EXAMS           |       /--\| )|_|(_||_)(_||_(-(_|           | 
+|                                   |                    |                       | 
+| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |                          __   __  __  __   | 
+|                                   |   |\/| _   . _ _  . _     _) /  \  _)  _)  | 
+|  ELECTIONS 2022: WHY TECHNOLOGY   |   |  |(_)\/|(-_)  || )   /__ \__/ /__ /__  | 
+|          IS IMPORTANT             |                                            | 
+|                                   |                                            |
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+|                                               | [ S P O R T S ]                |
+|             ..,,;;;;;;,,,,                    |                                |
+|       .,;'';;,..,;;;,,,,,.''';;,..            |     THE RISE IN POPULARITY     |
+|    ,,''                    '';;;;,;''         |                                | 
+|   ;'    ,;@@;'  ,@@;, @@, ';;;@@;,;';.        |            OF CHESS            |
+|  ''  ,;@@@@@'  ;@@@@; ''    ;;@@@@@;;;;       |                                | 
+|     ;;@@@@@;    '''     .,,;;;@@@@@@@;;;      |       AMIDST THE PANDEMIC      |
+|    ;;@@@@@@;           , ';;;@@@@@@@@;;;.     |                                |
+|     '';@@@@@,.  ,   .   ',;;;@@@@@@;;;;;;     |                   (\=,         | 
+|        .   '';;;;;;;;;,;;;;@@@@@;;' ,.:;'     |    __    |'-'-'|  //  .\       | 
+|          ''..,,     ''''    '  .,;'           |   /  \   |_____| (( \_  \      |
+|               ''''''::''''''''                |   \__/    |===|   ))  `\_)     |
+|                                               |  /____\   |   |  (/     \      |
+|      "In a world of universal deceit,         |   |  |    |   |   | _.-'|      |
+|   telling the truth is a revolutionary act."  |   |__|    )___(    )___(       |
+|                                               |  (====)  (=====)  (=====)      |
+|          ~ George Orwell ~ 1984 ~             |  }===={  }====={  }====={      |  
+|                                               | (______)(_______)(_______)     |
+| [ E D I T O R I A L ] - A World On Fire?      | ><><><><><><><><><><><><><><>< |
+*--------------------------------------------------------------------------------*
             )" << '\n';
 
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-END OF FRONT PAGE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
@@ -117,7 +137,7 @@ void ShowPage() {
             "    countless reports from professionals have said we're transitioning from a pan-\n"
             "    demic towards an endemic. Wherein the virus will still live on but the majority\n" 
             "    will be immune to the virus and its discovered variants.\n";
-            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-END OF HEADLINE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
             break;
         case 2: // News Articles
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-NEWS ARTICLES-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
@@ -148,16 +168,95 @@ void ShowPage() {
             "    it (Social Media) to show support, or even hate towards an idea or a person.\n"
             "    As a result, the current state of technology has never been so influential\n"
             "    in the recent years, and is deemed to be important in one's nation\n";
-            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-END OF ARTICLES-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
             break;
         case 3: // Entertainment
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-ENTERTAINMENT-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
-            cout << "\n\t ~~~ MOVIES AND TV SHOW RECAPPED ~~~\n\n";
+            cout << "\n\t ~~~ Anticipated Movies in 2022 ~~~\n\n";
+            cout << 
+            "   It's been the third month of the year, and so far we have seen movies or shows\n"
+            "   that exceed our expectations, some are entertaining, some will leave its viewers\n"
+            "   a moral or a lesson, and some will make you speechless. As we move forward through\n" 
+            "   the years, normal/mediocre movies come and go, it will stay there for a while but\n"
+            "   movies that are made with true essence and is on its purest form will stay longer.\n"
+            "   We see this, as some rare and old movies still become relevant and influential\n"
+            "   throughout the decades. With that, we have considered 5 movies that are mostly\n" 
+            "   anticipated by critics and praised by its fans.\n\n"
+            "   LIST OF MOVIES (IN NO ORDER)\n\n"
+            "   * Nope\n\t - Directed by Jordan Peele, Horror/Thriller\n\n"
+            "   * Top Gun: Maverick\n\t - Directed by Joseph Kosinski, Action/Adventure\n\n"
+            "   * The Northman\n\t - Directed by Robert Eggers, Action/Adventure\n\n"
+            "   * Thor: Love and Thunder\n\t - Directed by Taika Waititi, Action/Adventure\n\n"
+            "   * The Batman (NOW SHOWING)\n\t - Directed by Matt Reeves, Action/Adventure\n\n"
+            "   * Doctor Strange in the Multiverse of Madness\n\t - Directed by Sam Raimi, Adventure/Fantasy\n\n"
+            "   * Lightyear\n\t - Directed by Angus MacLane, Adventure/Fantasy\n\n"
+            "   * Jurrasic World: Dominion\n\t - Directed by Colin Trevorrow, Sci-Fi/Adventure\n\n"
+            "   * Avatar 2\n\t - Directed by James Cameron, Sci-Fi/Action\n\n"
+            "   * Turning Red (NOW SHOWING)\n\t - Directed by Domee Shi, Comedy/Family\n\n";
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
             break;
         case 4: // Sports Page
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-SPORTS-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
+            cout << "\n\t ~~~ The Rise In Popularity Of Chess Amidst The Pandemic ~~~\n\n";
+            cout << 
+            "   Chess has been totally on the rise since the start of the pandemic, from\n"
+            "   its ancient history 1500 years ago. Chess is considered as a recreational\n"
+            "   activity, it is a sport in which decades of competition have sparked from\n"
+            "   countries that are focusing on it such as Russia, and the United States back\n"
+            "   then in the span of the Cold War, where both countries battle in order to see\n"
+            "   who's the smartest and the toughest of them all. Now in the present time, Chess\n"
+            "   is still seen as a competitive sport. However, it can be a means of entertainment\n"
+            "   as well.\n\n"
+            "   Amidst the current situation that this pandemic has brought to us, many people are\n"
+            "   forced to stay in their homes, especially adults or kids who are working or study-\n" 
+            "   ing for a period of time. With professional chess players switching to the digital\n"
+            "   side of technology, we now have livestreamers who play Chess and teach the masses\n"
+            "   and for that cause, the advancement of technology is at work as well. Considereing\n"
+            "   that in the past we didn't have online Chess. From this little spark, a recent tv-\n"
+            "   show on Netflix entitled 'The Queen's Gambit' gained a lot of attention, not just \n"
+            "   from Chess players, but from normal people as well. As a result, it boosted the pop\n"
+            "   ularity of the game. As of now, Chess is still becoming more popular as new players\n"
+            "   are introduced to the game, the ease of access within chess is literally clicks away\n"
+            "   countless platforms such as 'Lichess.org', allows users (even users with no accounts)\n"
+            "   to play live and real-time. In the end, people stay at home and find new ways to gain\n"
+            "   hobbies or interests, just to pass the time.\n";
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
             break;
         case 5: // Editorial
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-=-EDITORIAL-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
+            cout << "\n\t ~~~ OPINION: A World On Fire ~~~\n\n";
+            cout <<
+            "   Apparently, you might have heard the recent news about the Russian invasion of Ukraine\n"
+            "   while this seems, quite alarming and shocking at the same time. What's truly happening is we're\n"
+            "   like slowly approacing our doom, and this is like the first step, from diseases, wars\n"
+            "   famine, poverty and more.\n\n"
+            "   We're slowly killing ourselves, deteriorating, every aspect in our life is basically affected,\n"
+            "   from the moment you hold your phone, you are not in control. What's sad about the 21st Century\n"
+            "   is that, it got real. It got real to the point where there's simply no return, and if you\n" 
+            "   think this Russian invasion is the first thing to happen in this decade or year....\n"
+            "   and will probably be the last thing to happen... You're wrong! because it's happening \n"
+            "   in basically almost every part of the world, like Afghanistan, Sudan, Yemen, and much \n"
+            "   more in terms of minor or major conflicts. In fact, China is already planning their way\n"
+            "   in a long term, theres no need for blood to pour down in every nation. In fact, what they're\n"
+            "   doing now is colonizing us. Neocolonialism if u may, it just doesn't happen right in the\n"
+            "   Philippines, as many Southeast Asian countries are also affected like Malaysia, Thailand\n"
+            "   and much more. Moving on, we can somewhat see a pattern that governments are becoming too\n"
+            "   powerful and tyrannical. History is just forced to repeat itself from Hitler, Mao Zedong,\n" 
+            "   Stalin and Kim II-Sung, we now have Kim Jong-Un, Duterte/Marcos, Putin, Xi Jinping ironically\n"
+            "   and literally becoming the 'Four Horsemen of the Apocalypse'. Only these men have brought\n"
+            "   suffering and oppression to the totality of all people, their lies twist and bend history\n"
+            "   and the minds of the people especially the youth which is the future of one's nation.\n"
+            "   The crazy thing is, people are vulnerable and they have no idea, that they're no longer\n"
+            "   protected, and in control of their minds. From mass surveillance, fake news/disinformation\n"
+            "   social media/gaming addiction, you name it, and from these typical things what is at the cen-\n"
+            "   ter is technology itself. Ever since we got it, it made things easier, and now it seems like\n"
+            "   we want more of that, whether it's convenience, pleasure, satisfaction.\n\n"
+            "   In the end, we humans are naturally inclined to greed and selfishness. From all of these things,\n" 
+            "   you might ask yourself, when will we ever wake up? when will we ever just get along? Well you\n"
+            "   must understand and realize that the power is in your hands use it for the greater good for your\n"
+            "   family, your people, and most importantly yourself. Someday, we'll just get there....\n"
+            "   \nThanks for reading =)\n";
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
             break;
     }
 }

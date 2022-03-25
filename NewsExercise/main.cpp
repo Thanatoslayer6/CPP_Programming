@@ -51,11 +51,11 @@ void Login() {
 
 void Home() {
     // Greet the user
-    cout << R"(     _   ____________  _   __   _   _________       _______    _____ ________________)" << endl;
-    cout << R"(    / | / / ____/ __ \/ | / /  / | / / ____/ |     / / ___/   / ___//  _/_  __/ ____/)" << endl;
-    cout << R"(   /  |/ / __/ / / / /  |/ /  /  |/ / __/  | | /| / /\__ \    \__ \ / /  / / / __/)" << endl;
-    cout << R"(  / /|  / /___/ /_/ / /|  /  / /|  / /___  | |/ |/ /___/ /   ___/ // /  / / / /___)" << endl;
-    cout << R"( /_/ |_/_____/\____/_/ |_/  /_/ |_/_____/  |__/|__//____/   /____/___/ /_/ /_____/)" << endl;
+    cout <<
+    R"(
+                |\ | _   ,_  |\ | _     _  (`.|- _ 
+                | \|(/_()||  | \|(/_LL|_\  _)||_(/_
+    )";
     cout << "\n      ~ [ WELCOME TO THE NEON NEWS SITE (Logged in as " << username << ") ] ~\n";
     cout << "\n     Where do you want to go? ------ Please enter only one character \n\n";
     // Show possible pages
@@ -75,11 +75,40 @@ void ShowPage() {
         case 0: // Front page
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-=-FRONT PAGE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
             getDate(); // Show date
+            cout << R"(
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+|  _  _ _  _ _  _ ___  ____ ____    ____ ____    _  _ ____ _ _ _                 |
+|  |\ | |  | |\/| |__] |___ |__/    |  | |___    |\ | |___ | | |                 |
+|  | \| |__| |  | |__] |___ |  \    |__| |       | \| |___ |_|_|                 |
+|                                                                                |
+|  ____ ____ _  _ _ ___     /|  |‾‾|    ____ ____ ____ ____ ____                 | 
+|  |    |  | |  | | |  \ __  |  |__|    |    |__| [__  |___ [__                  | 
+|  |___ |__|  \/  | |__/    _|_    |    |___ |  | ___] |___ ___]                 | 
+|                                                                                | 
+|  ____ ____ ____    _  _ ____ _ _ _    ___  ____ ____ ___  ___  _ _  _ ____   / |
+|  |__| |__/ |___    |\ | |  | | | |    |  \ |__/ |  | |__] |__] | |\ | | __  /  |
+|  |  | |  \ |___    | \| |__| |_|_|    |__/ |  \ |__| |    |    | | \| |__] .   |
+|                                                                                |
+|  [ H E A D L I N E ]                                                           |
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+|  [ N E W S  - A R T I C L E S ]  |               [ E N T E R T A I N M E N T ] |
+|                                  |                                             |
+|  PCS STUDENTS WORRIED ABOUT THE  |                                             |
+|         UPCOMING EXAMS           |                                             |
+|                                  |                                             |
+|  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~   |                                             |
+|                                  |                                             |
+|  ELECTIONS 2022: WHY TECHNOLOGY  |                                             |
+|          IS IMPORTANT            |                                             |
+|                                  |                                             |
+---------------------------------------------------------------------------------|
+            )" << '\n';
+
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-END OF FRONT PAGE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
             break;
         case 1: // Headline
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-=-HEADLINE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
-            cout << "\t ~~~ COVID-19 New Cases Are Now Dropping! ~~~\n\n";
+            cout << "\t ~~~ Number Of New COVID-19 Cases Are Now Dropping! ~~~\n\n";
             cout << 
             "    Reports have shown the gradual decrease of people being infected by COVID-19\n" 
             "    in a day to day basis. From more than 1k cases per day, now we see cases that\n" 
@@ -87,7 +116,7 @@ void ShowPage() {
             "    these active cases are somewhat stable; a plateau for now. On the other hand, \n"
             "    countless reports from professionals have said we're transitioning from a pan-\n"
             "    demic towards an endemic. Wherein the virus will still live on but the majority\n" 
-            "    is immune to the virus and its discovered variants.\n";
+            "    will be immune to the virus and its discovered variants.\n";
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-END OF HEADLINE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
             break;
         case 2: // News Articles
@@ -122,6 +151,9 @@ void ShowPage() {
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-END OF ARTICLES-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
             break;
         case 3: // Entertainment
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-ENTERTAINMENT-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
+            cout << "\n\t ~~~ MOVIES AND TV SHOW RECAPPED ~~~\n\n";
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
             break;
         case 4: // Sports Page
             break;

@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <chrono>
 
 using namespace std;
 
@@ -11,8 +10,9 @@ string database[][2] = {
 };
 string username, password;
 int pageNum;
-string Pages[6] = { "Front Page", "Headline", "News Articles", "Entertainment", "Sports Page", "Editorial" };
-char option, keyCodes[6] = {'f', 'h', 'n', 'e', 's', 'd'};
+bool loggedIn = false;
+string Pages[7] = { "Front Page", "Headline", "News Articles", "Entertainment", "Sports Page", "Editorial", "EXIT"};
+char option, keyCodes[7] = {'f', 'h', 'n', 'e', 's', 'd', 'x'};
 
 bool validateCredentials() {
     for (int i = 0; i < 3; i++){
@@ -24,7 +24,7 @@ bool validateCredentials() {
 }
 
 int checkPage(){
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 7; i++) {
         if (keyCodes[i] == option || keyCodes[i] == option + 32) { // can be upper or lowercase
            return i; // Returns the right index for the page
         }
@@ -32,9 +32,16 @@ int checkPage(){
     return -1; // -1 for error
 }
 
-void getDate() { // Taken from https://stackoverflow.com/questions/40100507/how-do-i-get-the-current-date-in-c
-    std::time_t now_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    cout << "    Date: " << std::ctime(&now_time);
+
+void showTableOfContents() { // Show possible pages
+    cout << "\n\t~ Table of Contents ~ \n\n";
+    for (int i = 0; i < 7; i++) {
+        if (i == 6) { // Exit
+            cout << "\n    [ Press x for " << Pages[i] << " ]\n"; 
+        } else {
+            cout << "      * " << Pages[i] << "\t   -   " << keyCodes[i] << "\n";
+        }
+    }
 }
 
 void Login() {
@@ -45,6 +52,8 @@ void Login() {
     cin >> password;
     if (validateCredentials() == false) {
         throw 5;
+    } else {
+        loggedIn = true;
     }
     cout << ".-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
 }
@@ -58,33 +67,25 @@ void Home() {
     )";
     cout << "\n      ~ [ WELCOME TO THE NEON NEWS SITE (Logged in as " << username << ") ] ~\n";
     cout << "\n     Where do you want to go? ------ Please enter only one character \n\n";
-    // Show possible pages
-    for (int i = 0; i < 6; i++) {
-        cout << "\t* " << Pages[i] << "\t" << "   -   " << keyCodes[i] << "\n";
-    }
-    cout << "\n\tGO TO ~~~~~~> ";
-    cin >> option;
-    pageNum = checkPage(); // Assign return value of function
-    if (pageNum == -1) {
-        throw 8;
-    }
 }
 
 void ShowPage() {
     switch(pageNum) {
         case 0: // Front page
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-=-FRONT PAGE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
-            getDate(); // Show date
             cout << R"(
 *--------------------------------------------------------------------------------*
-|  _  _ _  _ _  _ ___  ____ ____    ____ ____    _  _ ____ _ _ _                 |
-|  |\ | |  | |\/| |__] |___ |__/    |  | |___    |\ | |___ | | |                 |
-|  | \| |__| |  | |__] |___ |  \    |__| |       | \| |___ |_|_|                 |
-|                                                                                |
-|  ____ ____ _  _ _ ___     /|  |‾‾|    ____ ____ ____ ____ ____                 | 
-|  |    |  | |  | | |  \ __  |  |__|    |    |__| [__  |___ [__                  | 
-|  |___ |__|  \/  | |__/    _|_    |    |___ |  | ___] |___ ___]                 | 
-|                                                                                | 
+|  Monday, April 4, 2022  | CALL US NOW! (212) 804-6003 | PH LOTTO RESULTS 6/58  |
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+|  _  _ _  _ _  _ ___  ____ ____    ____ ____    _  _ ____ _ _ _  |-o         o/||
+|  |\ | |  | |\/| |__] |___ |__/    |  | |___    |\ | |___ | | |  |    \ q /    o|
+|  | \| |__| |  | |__] |___ |  \    |__| |       | \| |___ |_|_|  |  o .-o-. o   |
+|                                                                 | o-(o o o)-o  |
+|  ____ ____ _  _ _ ___         ____    ____ ____ ____ ____ ____  |  o ._o_. o   |
+|  |    |  | |  | | |  \ __ /|  |__|    |    |__| [__  |___ [__   |    / b \    q| 
+|  |___ |__|  \/  | |__/    _|_    |    |___ |  | ___] |___ ___]  |--------------|
+|                                                                 |COVID-19 VIRUS|
+|                                                                 `--------------| 
 |  ____ ____ ____    _  _ ____ _ _ _    ___  ____ ____ ___  ___  _ _  _ ____   / |
 |  |__| |__/ |___    |\ | |  | | | |    |  \ |__/ |  | |__] |__] | |\ | | __  /  |
 |  |  | |  \ |___    | \| |__| |_|_|    |__/ |  \ |__| |    |    | | \| |__] .   |
@@ -93,9 +94,9 @@ void ShowPage() {
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 |  [ N E W S  - A R T I C L E S ]   |             [ E N T E R T A I N M E N T ]  |
 |                                   |                                            |
-|  PCS STUDENTS WORRIED ABOUT THE   |        /\  _ |_. _. _  _ |_ _ _|           | 
-|          UPCOMING EXAMS           |       /--\| )|_|(_||_)(_||_(-(_|           | 
-|                                   |                    |                       | 
+|  PCS STUDENTS WORRIED ABOUT THE   |         /\  _ |_. _. _  _ |_ _ _|          | 
+|          UPCOMING EXAMS           |        /--\| )|_|(_||_)(_||_(-(_|          | 
+|                                   |                 |                          | 
 | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |                          __   __  __  __   | 
 |                                   |   |\/| _   . _ _  . _     _) /  \  _)  _)  | 
 |  ELECTIONS 2022: WHY TECHNOLOGY   |   |  |(_)\/|(-_)  || )   /__ \__/ /__ /__  | 
@@ -137,7 +138,7 @@ void ShowPage() {
             "    countless reports from professionals have said we're transitioning from a pan-\n"
             "    demic towards an endemic. Wherein the virus will still live on but the majority\n" 
             "    will be immune to the virus and its discovered variants.\n";
-            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
             break;
         case 2: // News Articles
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-NEWS ARTICLES-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
@@ -168,7 +169,7 @@ void ShowPage() {
             "    it (Social Media) to show support, or even hate towards an idea or a person.\n"
             "    As a result, the current state of technology has never been so influential\n"
             "    in the recent years, and is deemed to be important in one's nation\n";
-            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
             break;
         case 3: // Entertainment
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-ENTERTAINMENT-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
@@ -193,7 +194,7 @@ void ShowPage() {
             "   * Jurrasic World: Dominion\n\t - Directed by Colin Trevorrow, Sci-Fi/Adventure\n\n"
             "   * Avatar 2\n\t - Directed by James Cameron, Sci-Fi/Action\n\n"
             "   * Turning Red (NOW SHOWING)\n\t - Directed by Domee Shi, Comedy/Family\n\n";
-            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
             break;
         case 4: // Sports Page
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-SPORTS-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
@@ -220,7 +221,7 @@ void ShowPage() {
             "   countless platforms such as 'Lichess.org', allows users (even users with no accounts)\n"
             "   to play live and real-time. In the end, people stay at home and find new ways to gain\n"
             "   hobbies or interests, just to pass the time.\n";
-            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
             break;
         case 5: // Editorial
             cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-=-EDITORIAL-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
@@ -254,10 +255,24 @@ void ShowPage() {
             "   In the end, we humans are naturally inclined to greed and selfishness. From all of these things,\n" 
             "   you might ask yourself, when will we ever wake up? when will we ever just get along? Well you\n"
             "   must understand and realize that the power is in your hands use it for the greater good for your\n"
-            "   family, your people, and most importantly yourself. Someday, we'll just get there....\n"
-            "   \nThanks for reading =)\n";
-            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n\n";
+            "   family, your people, and most importantly yourself. Someday, we'll just get there....\n\n"
+            "   Thanks for reading =)\n";
+            cout << "\n.-=-=-=-=-=-=-=-=-=-=-=-=-=-END OF SECTION-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.\n";
             break;
+        case 6: // EXIT
+            cout << "\n ==================/\\ ^_^ GOODBYE READER ^_^ /\\=======================\n";
+            loggedIn = false;
+            break;
+    }
+}
+
+void Navigation() {
+    showTableOfContents();
+    cout << "\n    Navigate to -----> ";
+    cin >> option;
+    pageNum = checkPage(); // Assign return value of function
+    if (pageNum == -1) {
+        throw 8;
     }
 }
 
@@ -265,14 +280,17 @@ int main() {
     try {
         Login();
         Home();
-        ShowPage();
+        while (loggedIn == true) {
+            Navigation();
+            ShowPage();
+        }
     } catch (int errcode) {
         switch (errcode) {
             case 5:
-                cout << "\n\tError code 5: Failed to login (wrong username/password)\n";
+                cout << "\n\tError code 5: Failed to login (wrong username/password) Exiting now...\n";
                 break;
             case 8:
-                cout << "\n\tError code 8: Page doesn't exist! \n";
+                cout << "\n\tError code 8: Page doesn't exist! Exiting now...\n";
                 break;
         }
     }
